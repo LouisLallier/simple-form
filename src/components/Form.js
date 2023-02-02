@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputClassic from "./InputClassic";
 import InputPassword from "./InputPassword";
 
