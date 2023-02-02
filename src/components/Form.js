@@ -1,5 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import InputClassic from "./InputClassic";
+import InputPassword from "./InputPassword";
+
 const Form = ({
-  func,
+  funcSubmit,
   username,
   email,
   password,
@@ -8,49 +12,42 @@ const Form = ({
   setPassword,
   setEmail,
   setConfirmPass,
+  setShowConfirmedPass,
+  setShowPassword,
+  showPassword,
+  showConfirmedPass,
+  checkPass,
 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    func();
+    funcSubmit();
   };
 
   return (
     <div>
       <h1 className="mb-10 text-2xl">Create your account</h1>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input
-          value={username}
-          type="text"
-          placeholder="username"
-          onChange={(event) => {
-            setUsername(event.target.value);
-          }}
-        />
-        <input
-          value={email}
-          type="email"
-          placeholder="email@mail.com"
-          onChange={(event) => {
-            setEmail(event.target.value);
-          }}
-        />
-        <input
+        <InputClassic label="Name" value={username} set={setUsername} />
+        <InputClassic label="Email" value={email} set={setEmail} />
+        <InputPassword
+          label="Password"
+          classname={checkPass}
           value={password}
-          type="text"
-          placeholder="password"
-          onChange={(event) => {
-            setPassword(event.target.value);
-          }}
+          type={showPassword}
+          setPassword={setPassword}
+          showPassword={showPassword}
+          setShowPassword={setShowPassword}
         />
-        <input
+        <InputPassword
+          label="Confirm Password"
+          classname={checkPass}
           value={confirmPass}
-          type="text"
-          placeholder="confirm password"
-          onChange={(event) => {
-            setConfirmPass(event.target.value);
-          }}
+          type={showConfirmedPass}
+          setPassword={setConfirmPass}
+          showPassword={showConfirmedPass}
+          setShowPassword={setShowConfirmedPass}
         />
+
         <button
           className="mt-8 rounded-md bg-purple-500 py-3 text-white"
           type="submit"
